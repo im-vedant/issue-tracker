@@ -28,12 +28,7 @@ export default async function Home() {
       </Flex>
       <LatestIssues/>
     </Grid>
-//  <div>
-// <LatestIssues/>
-// <IssueSummary open={open} inProgress={inProgress} closed={closed}/>
 
-// <IssueChart open={open} inProgress={inProgress} closed={closed}/>
-//  </div>
   );
 }
 
@@ -41,3 +36,5 @@ export const metadata : Metadata={
   title : "Issue Tracker-Dashboard",
   description : "View a summary of project issues "
 }
+
+export const dynamic='force-dynamic'
