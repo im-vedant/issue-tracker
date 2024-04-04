@@ -20,8 +20,10 @@ model Issue {
   status      Status   @default(OPEN)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
-  assignedTo User? @relation(fields: [assignedToId], references: [id])
-  assignedToId String?
+  assignedTo User? @relation( name: "AssignedTo",fields: [assignedToId], references: [id], onDelete: SetNull)
+  assignedToId String? @db.Text()
+  createdById String @db.Text()
+  createdBy User @relation(name: "CreatedBy",fields: [createdById], references: [email], onDelete: Cascade)
 }
 
 enum Status {
@@ -61,12 +63,13 @@ model Session {
 model User {
   id            String    @id @default(cuid())
   name          String?
-  email         String?   @unique
+  email         String   @unique
   emailVerified DateTime?
   image         String?
   accounts      Account[]
   sessions      Session[]
-  AssignedIssue Issue[]
+  CreatedIssue  Issue[] @relation("CreatedBy")
+  AssignedIssue Issue[] @relation("AssignedTo")
 }
 
 model VerificationToken {
