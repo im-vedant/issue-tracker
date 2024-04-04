@@ -8,6 +8,7 @@ export async function PATCH (req : NextRequest, {params} : {params : {id : strin
     const session =await getServerSession(AuthOptions)
     if(!session)
     return NextResponse.json({},{status : 401})
+
 const body = await req.json()
 const validation= patchIssueSchema.safeParse(body)
  if(!validation.success)
@@ -15,20 +16,13 @@ const validation= patchIssueSchema.safeParse(body)
     return NextResponse.json(validation.error.errors , {status : 400})
  }
 if(body.assignedToId){
-   const user =await  prisma.issue.findUnique({
+   const user =await  prisma.user.findUnique({
         where :{
-            id : parseInt(params.id) 
+            id : body.assignedToId ,
         }
     })
     if(!user)
-    {
-        return NextResponse.json({
-            error : "Invalid user"
-        },
-        {
-            status : 400
-        })
-    }
+    return NextResponse.json({error : "Invalid User"},{ status : 400})   
 }
  const issue =await prisma.issue.findUnique({
     where : {
@@ -37,7 +31,6 @@ if(body.assignedToId){
  })
 if(!issue)
 return NextResponse.json({error : "Invalid Issue"},{ status : 404})
-
 const updatedIssue=await prisma.issue.update({
     where : {
         id : issue.id
@@ -45,7 +38,8 @@ const updatedIssue=await prisma.issue.update({
     data : {
         title : body.title,
         description : body.description,
-        assignedToId : body.assignedToId
+        assignedToId : body.assignedToId,
+        status : body.status
     }
 })
  return NextResponse.json( updatedIssue, { status : 201})

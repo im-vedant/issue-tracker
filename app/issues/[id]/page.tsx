@@ -10,6 +10,7 @@ import DeleteIssueButton from './DeleteIssueButton'
 import { getServerSession } from 'next-auth'
 import AuthOptions from '@/app/auth/authOptions'
 import AssigneeSelect from './AssigneeSelect'
+import MarkAsClosedButton from './MarkAsClosedButton'
 
 const fetchUser=cache((issueId : number)=>{
   return  prisma.issue.findUnique({where :{id : issueId}})
@@ -36,7 +37,7 @@ const IssueDetailPage = async ({params} :Props) => {
 <ReactMarkDown>{issueDetails.description}</ReactMarkDown>
 </Card>
 </Box>{
-  session && <Box >
+  issueDetails.status!=='CLOSED' &&session?.user?.email === issueDetails.createdById && <Box >
    <Flex direction='column' gap='4'>
     <AssigneeSelect issue={issueDetails}/>
    <Button >
@@ -44,6 +45,7 @@ const IssueDetailPage = async ({params} :Props) => {
       <Link href={`/issues/edit/${issueDetails.id}`}>Edit Issue</Link>
     </Button>
   <DeleteIssueButton issueDetails={issueDetails}/>
+  <MarkAsClosedButton issue={issueDetails}/>
    </Flex>
 </Box>}
     </Grid>
