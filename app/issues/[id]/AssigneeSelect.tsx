@@ -24,7 +24,8 @@ const AssigneeSelect = ({issue} :{issue : Issue}) => {
     if(userId===' ')
     userId=null
     let data = {
-        assignedToId : userId 
+        assignedToId : userId ,
+        status : userId ?"IN_PROGRESS" : "OPEN"
     }
 
    try {
