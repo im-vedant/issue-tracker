@@ -18,7 +18,8 @@ const validation= issueSchema.safeParse(body)
  const newIssue =await prisma.issue.create({
     data :{
         title : body.title,
-        description : body.description
+        description : body.description,
+        createdById: session!.user!.email!
     }
  })
 
