@@ -1,4 +1,21 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Issue Tracker
+
+Welcome to the Issue Tracker project! This application allows users to create, manage, and assign issues.
+
+## Technologies Used
+
+
+* **Full Stack Framework**: Next.js
+* **ORM**: Prisma
+* **Authentication**: NextAuth.js 
+* **CSS**: Radix UI and Tailwind CSS
+* **Database**: Postgres
+
+## Features
+* **User Authentication**: Users can sign up, sign in, and sign out using NextAuth.js.
+* **Create Issues**: Users can create new issues with title and descriptions
+* **Assign Issues**: Issues can be assigned to other users.
+* **View Issues**: A list of issues is displayed, showing their status, assignee, and other relevant information.
 
 ## Getting Started
 
