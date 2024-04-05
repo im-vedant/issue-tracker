@@ -16,7 +16,8 @@ Welcome to the Issue Tracker project! This application allows users to create, m
 * **Create Issues**: Users can create new issues with title and descriptions
 * **Assign Issues**: Issues can be assigned to other users.
 * **View Issues**: A list of issues is displayed, showing their status, assignee, and other relevant information.
-
+## Tutorial Video 
+https://www.loom.com/share/1263f4c5e4a14d5c99440c1558d30e73
 ## Getting Started
 
 First, run the development server:
