@@ -19,7 +19,7 @@ const IssueStatusFilter = () => {
     defaultValue={searchParams.get('status') || ' '}
      onValueChange={(value)=>{
         const params= new URLSearchParams()
-        if(value)
+        if(value!==" ")
         params.append('status',value)
         
        if( searchParams.get('orderBy'))
