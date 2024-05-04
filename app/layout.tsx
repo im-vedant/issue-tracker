@@ -8,6 +8,7 @@ import './theme.config.css'
 import { ThemePanel } from "@radix-ui/themes";
 import QueryClientProvider from "./QueryClientProvider";
 import AuthProvider from "./auth/Provider";
+import { GoogleTagManager } from '@next/third-parties/google'
 const inter = Inter({ subsets: ["latin"], variable : "--font-inter" });
 import { GoogleAnalytics } from '@next/third-parties/google'
 
@@ -19,7 +20,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+<<<<<<< Updated upstream
        <GoogleAnalytics gaId="GTM-5W74JDL8" />
+=======
+     <GoogleTagManager gtmId="GTM-5W74JDL8" />
+>>>>>>> Stashed changes
       <QueryClientProvider>
       <AuthProvider>
       <body className={inter.variable}>
