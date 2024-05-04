@@ -20,11 +20,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-<<<<<<< Updated upstream
-       <GoogleAnalytics gaId="GTM-5W74JDL8" />
-=======
-     <GoogleTagManager gtmId="GTM-5W74JDL8" />
->>>>>>> Stashed changes
+      <GoogleTagManager gtmId="GTM-5W74JDL8"/>
+      
       <QueryClientProvider>
       <AuthProvider>
       <body className={inter.variable}>
