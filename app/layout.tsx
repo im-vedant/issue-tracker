@@ -9,7 +9,7 @@ import { ThemePanel } from "@radix-ui/themes";
 import QueryClientProvider from "./QueryClientProvider";
 import AuthProvider from "./auth/Provider";
 const inter = Inter({ subsets: ["latin"], variable : "--font-inter" });
-
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 
 export default function RootLayout({
@@ -19,6 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+       <GoogleAnalytics gaId="GTM-5W74JDL8" />
       <QueryClientProvider>
       <AuthProvider>
       <body className={inter.variable}>
